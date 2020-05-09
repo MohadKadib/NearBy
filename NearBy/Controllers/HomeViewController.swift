@@ -7,51 +7,64 @@
 //
 
 import UIKit
+import CoreLocation
+import SVProgressHUD
 
 class HomeViewController: UIViewController {
     
     
     
     @IBOutlet weak var tableView: UITableView!
-    
-    
+    let locationManager = CLLocationManager()
     var venuesArray = [Venue]()
 
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
-        APIClient.getExplore(ll: "40.7243,-74.0018", client_id: "NKV0UAMIO33D1RT1I0OU1O51KJH350NC0V4LKA15HGFZCV0R", client_secret: "U4FZMOY4B2FE1PTUT1QICPTXP2KU3VKAGFIFERWT0QFPFI2P", v: "20180323", radius: "1000", completionHandler: { (venues) in
+        checkLocationServices()
+       
+    }
+    
+    func APICall(latitude: String, longitude: String) {
+        print("gowa APiCAll")
+        //SVProgressHUD.show()
+        let coordinates = latitude + "," + longitude
+        print(coordinates)
+        APIClient.getExplore(ll: coordinates, client_id: "NKV0UAMIO33D1RT1I0OU1O51KJH350NC0V4LKA15HGFZCV0R", client_secret: "U4FZMOY4B2FE1PTUT1QICPTXP2KU3VKAGFIFERWT0QFPFI2P", v: "20180323", radius: "1000", completionHandler: { (venues) in
             
             
             guard let safeVenues = venues else {return}
             self.venuesArray = safeVenues
             self.tableView.reloadData()
+            //SVProgressHUD.dismiss()
             print("gowa el APi ya bahsaaaaaaaaaaa")
             
             
             
         }) { (error) in
             print(error?.localizedDescription as Any)
+            //SVProgressHUD.dismiss()
         }
-
-       
+        
+        
     }
+    
+    
     
 
 
 }
 
+// MARK: - TableViewMethods
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("hena ahooooooooooooooooooo")
-        print(venuesArray.count)
+    
         return venuesArray.count
         
     }
@@ -66,6 +79,72 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    
+    
+}
+
+// MARK: - Locatoin Manager
+
+extension HomeViewController: CLLocationManagerDelegate {
+    
+    func setupLocationManager() {
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 500
+        
+    }
+    
+    func checkLocationServices() {
+        
+        if CLLocationManager.locationServicesEnabled() {
+            
+            setupLocationManager()
+            checkLocationAuthorization()
+            
+        } else {
+            
+            
+        }
+        
+        
+        
+    }
+    
+    
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        case .denied:
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            break
+        case .authorizedAlways:
+            break
+        
+        @unknown default:
+            break
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard let location = locations.last else {return}
+        
+        
+        APICall(latitude: String(location.coordinate.latitude), longitude: String(location.coordinate.longitude))
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorization()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
     
     
 }

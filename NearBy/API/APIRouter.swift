@@ -73,44 +73,7 @@ enum APIRouter: URLRequestConvertible {
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
         
-//        let credentialData = "ck_37baea2e07c8960059930bf348d286c7e48eb325:cs_0d74440eb12ac4726080563a4ceb0363ad5a0112".data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-//
-//        let base64Credentials = credentialData.base64EncodedString()
-//        let headers = "Basic \(base64Credentials)"
-//
-//        //urlRequest.setValue(Constants.ContentType.json.rawValue, forHTTPHeaderField: Constants.HTTPHeaderField.contentType.rawValue)
-//
-//        urlRequest.setValue(headers, forHTTPHeaderField: Constants.HTTPHeaderField.authentication.rawValue)
-        
-        
-        
-        // Parameters
-        
-        
-        
-        
-//        if let parameters = parameters {
-//            do {
-//                print(parameters)
-//                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
-//            } catch {
-//                throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
-//            }
-//        }
-        
-        
-//        if path == "driverlogin.php" {
-//            return try URLEncoding.default.encode(urlRequest, with: parameters)
-//        }
-//        
-//        
-//        if path == "driverreg.php" {
-//        return try URLEncoding.default.encode(urlRequest, with: parameters)
-//        }
-//        
-//        if path == "editdriver.php" {
-//        return try URLEncoding.default.encode(urlRequest, with: parameters)
-//        }
+
         
         return urlRequest as URLRequest
         
