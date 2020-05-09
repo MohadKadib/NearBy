@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="150" id="i7W-Fb-fwv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="VenueTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VenueTableViewCell" rowHeight="150" id="i7W-Fb-fwv" customClass="VenueTableViewCell" customModule="NearBy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i7W-Fb-fwv" id="ZWe-1m-d0T">
@@ -56,6 +56,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="120" id="9Fe-S3-Ogg"/>
                                                         <constraint firstAttribute="trailing" secondItem="xQ1-T6-WAY" secondAttribute="trailing" constant="20" id="A01-6M-3Gt"/>
                                                         <constraint firstAttribute="bottom" secondItem="YOr-c6-ywb" secondAttribute="bottom" id="Fgt-si-l8y"/>
                                                         <constraint firstItem="YOr-c6-ywb" firstAttribute="centerY" secondItem="L6Q-mk-qRt" secondAttribute="centerY" id="Yp8-NW-sIm"/>
@@ -76,6 +77,11 @@
                                                 <constraint firstItem="L6Q-mk-qRt" firstAttribute="leading" secondItem="ZWe-1m-d0T" secondAttribute="leadingMargin" constant="20" id="rf6-5K-77V"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="venueAdressLabel" destination="H8c-Lf-msV" id="ADG-Zk-JdW"/>
+                                            <outlet property="venueImageView" destination="YOr-c6-ywb" id="Qp7-hn-bEb"/>
+                                            <outlet property="venueNameLabel" destination="xQ1-T6-WAY" id="KZW-LX-CFg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -92,6 +98,9 @@
                     <navigationItem key="navigationItem" title="Near By" id="cpG-kn-4rs">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="fgB-P9-gtp"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="lI2-bG-eeb" id="Sc5-VP-E2Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UgX-98-Uu6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
