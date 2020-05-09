@@ -96,9 +96,14 @@
                         <viewLayoutGuide key="safeArea" id="uKu-w2-ukX"/>
                     </view>
                     <navigationItem key="navigationItem" title="Near By" id="cpG-kn-4rs">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="fgB-P9-gtp"/>
+                        <barButtonItem key="rightBarButtonItem" title="Realtime" id="fgB-P9-gtp">
+                            <connections>
+                                <action selector="switchMoodPressed:" destination="9ni-bK-g7E" id="kyo-Jr-Why"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="moodButton" destination="fgB-P9-gtp" id="LI8-TO-zv5"/>
                         <outlet property="tableView" destination="lI2-bG-eeb" id="Sc5-VP-E2Q"/>
                     </connections>
                 </viewController>

@@ -19,6 +19,7 @@
 		C55CEC632464D9810095CCCE /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55CEC622464D9810095CCCE /* APIRouter.swift */; };
 		C55CEC6624660B8C0095CCCE /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55CEC6524660B8C0095CCCE /* Venue.swift */; };
 		C55CEC682466569B0095CCCE /* VenueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55CEC672466569A0095CCCE /* VenueTableViewCell.swift */; };
+		C55CEC6B2466FFEC0095CCCE /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55CEC6A2466FFEC0095CCCE /* Extentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C55CEC622464D9810095CCCE /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		C55CEC6524660B8C0095CCCE /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		C55CEC672466569A0095CCCE /* VenueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
+		C55CEC6A2466FFEC0095CCCE /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		C53AAC6D2464556200773F2E /* NearBy */ = {
 			isa = PBXGroup;
 			children = (
+				C55CEC692466FFD20095CCCE /* Helper */,
 				C55CEC6424660AD40095CCCE /* Model */,
 				C5471EF02464CDE1001AAA6F /* View */,
 				C5471EF12464CDF7001AAA6F /* Controllers */,
@@ -127,6 +130,14 @@
 				C55CEC6524660B8C0095CCCE /* Venue.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C55CEC692466FFD20095CCCE /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C55CEC6A2466FFEC0095CCCE /* Extentions.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		EDF4DB48F9BB93C4D75C8F31 /* Pods */ = {
@@ -261,6 +272,7 @@
 				C53AAC85246490B400773F2E /* HomeViewController.swift in Sources */,
 				C55CEC6624660B8C0095CCCE /* Venue.swift in Sources */,
 				C5471EF42464CE4F001AAA6F /* Constants.swift in Sources */,
+				C55CEC6B2466FFEC0095CCCE /* Extentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

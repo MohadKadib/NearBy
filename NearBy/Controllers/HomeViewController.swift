@@ -13,10 +13,11 @@ import SVProgressHUD
 class HomeViewController: UIViewController {
     
     
-    
+    @IBOutlet weak var moodButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     let locationManager = CLLocationManager()
     var venuesArray = [Venue]()
+    var realtimeMood: Bool = true
 
     
     
@@ -28,6 +29,18 @@ class HomeViewController: UIViewController {
         checkLocationServices()
        
     }
+    
+    
+    @IBAction func switchMoodPressed(_ sender: UIBarButtonItem) {
+        realtimeMood = !realtimeMood
+        if realtimeMood == true {
+            moodButton.title = "Realtime"
+        } else {
+            moodButton.title = "SingleUpdate"
+        }
+        
+    }
+    
     
     func APICall(latitude: String, longitude: String) {
         print("gowa APiCAll")
@@ -41,7 +54,7 @@ class HomeViewController: UIViewController {
             self.venuesArray = safeVenues
             self.tableView.reloadData()
             //SVProgressHUD.dismiss()
-            print("gowa el APi ya bahsaaaaaaaaaaa")
+            
             
             
             
@@ -74,6 +87,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VenueTableViewCell", for: indexPath) as! VenueTableViewCell
         
         cell.venueNameLabel.text = venuesArray[indexPath.row].name
+        cell.venueAdressLabel.text = venuesArray[indexPath.row].adress
         
         return cell
     }
@@ -132,10 +146,22 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        guard let location = locations.last else {return}
+        switch realtimeMood {
+            
+        case true:
+            
+            guard let location = locations.last else {return}
+            APICall(latitude: String(location.coordinate.latitude), longitude: String(location.coordinate.longitude))
+            
+        case false:
+            
+            guard let location = locations.first else {return}
+            APICall(latitude: String(location.coordinate.latitude), longitude: String(location.coordinate.longitude))
+            
+        }
         
         
-        APICall(latitude: String(location.coordinate.latitude), longitude: String(location.coordinate.longitude))
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
