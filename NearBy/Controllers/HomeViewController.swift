@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import SVProgressHUD
+import NVActivityIndicatorView
 
 class HomeViewController: UIViewController {
     
@@ -18,7 +19,7 @@ class HomeViewController: UIViewController {
     let locationManager = CLLocationManager()
     var venuesArray = [Venue]()
     var realtimeMood: Bool = true
-
+    let loading = NVActivityIndicatorView(frame: .zero, type: .ballRotateChase, color: .black, padding: 0)
     
     
     override func viewDidLoad() {
@@ -27,6 +28,8 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         checkLocationServices()
+        
+        
        
     }
     
@@ -47,21 +50,26 @@ class HomeViewController: UIViewController {
         //SVProgressHUD.show()
         let coordinates = latitude + "," + longitude
         print(coordinates)
-        APIClient.getExplore(ll: coordinates, client_id: "NKV0UAMIO33D1RT1I0OU1O51KJH350NC0V4LKA15HGFZCV0R", client_secret: "U4FZMOY4B2FE1PTUT1QICPTXP2KU3VKAGFIFERWT0QFPFI2P", v: "20180323", radius: "1000", completionHandler: { (venues) in
+        DispatchQueue.main.async {
             
-            
-            guard let safeVenues = venues else {return}
-            self.venuesArray = safeVenues
-            self.tableView.reloadData()
-            //SVProgressHUD.dismiss()
-            
-            
-            
-            
-        }) { (error) in
-            print(error?.localizedDescription as Any)
-            //SVProgressHUD.dismiss()
+            self.startLoading(loading: self.loading)
+            APIClient.getExplore(ll: coordinates, client_id: Constants.APIParameters.client_id.rawValue, client_secret: Constants.APIParameters.client_secret.rawValue, v: Constants.APIParameters.v.rawValue, radius: Constants.APIParameters.radius.rawValue, completionHandler: { (venues) in
+                
+                
+                guard let safeVenues = venues else {return}
+                self.venuesArray = safeVenues
+                self.tableView.reloadData()
+                //SVProgressHUD.dismiss()
+                self.loading.stopAnimating()
+                
+            }) { (error) in
+                print(error?.localizedDescription as Any)
+                self.displayMessage(userMessage: error?.localizedDescription ?? "error in server call")
+                //SVProgressHUD.dismiss()
+                self.loading.stopAnimating()
+            }
         }
+        
         
         
     }
@@ -79,6 +87,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
         return venuesArray.count
+        
         
     }
     
@@ -170,6 +179,7 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
+        displayMessage(userMessage: error.localizedDescription)
     }
     
     

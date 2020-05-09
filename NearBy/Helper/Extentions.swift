@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 extension UIViewController {
+    
+    
     
     func displayMessage(userMessage: String) {
         
@@ -23,6 +26,22 @@ extension UIViewController {
         
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func startLoading(loading: NVActivityIndicatorView) {
+        
+//        let loading = NVActivityIndicatorView(frame: .zero, type: .ballRotateChase, color: .green, padding: 0)
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(loading)
+        NSLayoutConstraint.activate([
+            loading.widthAnchor.constraint(equalToConstant: 80),
+            loading.heightAnchor.constraint(equalToConstant: 80),
+            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        loading.startAnimating()
         
     }
     

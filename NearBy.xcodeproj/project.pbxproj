@@ -117,9 +117,9 @@
 		C5471EF22464CE29001AAA6F /* API */ = {
 			isa = PBXGroup;
 			children = (
-				C5471EF32464CE4F001AAA6F /* Constants.swift */,
-				C55CEC602464D3A70095CCCE /* APICient.swift */,
 				C55CEC622464D9810095CCCE /* APIRouter.swift */,
+				C55CEC602464D3A70095CCCE /* APICient.swift */,
+				C5471EF32464CE4F001AAA6F /* Constants.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";

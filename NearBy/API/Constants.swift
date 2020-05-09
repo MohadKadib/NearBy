@@ -17,10 +17,10 @@ struct Constants {
     }
     
     enum APIParameters :String{
-        case client_id
-        case client_secret
-        case v
-        case ll
+        case client_id = "NKV0UAMIO33D1RT1I0OU1O51KJH350NC0V4LKA15HGFZCV0R"
+        case client_secret = "U4FZMOY4B2FE1PTUT1QICPTXP2KU3VKAGFIFERWT0QFPFI2P"
+        case v = "20180323"
+        case radius = "1000"
     }
     
     
