@@ -47,26 +47,24 @@ class HomeViewController: UIViewController {
     
     func APICall(latitude: String, longitude: String) {
         print("gowa APiCAll")
-        //SVProgressHUD.show()
         let coordinates = latitude + "," + longitude
         print(coordinates)
         DispatchQueue.main.async {
             
-            self.startLoading(loading: self.loading)
+            //self.startLoading(loading: self.loading)
             APIClient.getExplore(ll: coordinates, client_id: Constants.APIParameters.client_id.rawValue, client_secret: Constants.APIParameters.client_secret.rawValue, v: Constants.APIParameters.v.rawValue, radius: Constants.APIParameters.radius.rawValue, completionHandler: { (venues) in
                 
                 
                 guard let safeVenues = venues else {return}
                 self.venuesArray = safeVenues
                 self.tableView.reloadData()
-                //SVProgressHUD.dismiss()
-                self.loading.stopAnimating()
+                //self.loading.stopAnimating()
                 
             }) { (error) in
                 print(error?.localizedDescription as Any)
                 self.displayMessage(userMessage: error?.localizedDescription ?? "error in server call")
-                //SVProgressHUD.dismiss()
-                self.loading.stopAnimating()
+            
+                //self.loading.stopAnimating()
             }
         }
         
@@ -126,10 +124,8 @@ extension HomeViewController: CLLocationManagerDelegate {
             checkLocationAuthorization()
             
         } else {
-            
-            
+            displayMessage(userMessage: "Please Enable Location")
         }
-        
         
         
     }
