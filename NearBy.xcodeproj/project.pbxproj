@@ -20,6 +20,7 @@
 		C55CEC6624660B8C0095CCCE /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55CEC6524660B8C0095CCCE /* Venue.swift */; };
 		C55CEC682466569B0095CCCE /* VenueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55CEC672466569A0095CCCE /* VenueTableViewCell.swift */; };
 		C55CEC6B2466FFEC0095CCCE /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55CEC6A2466FFEC0095CCCE /* Extentions.swift */; };
+		C55CEC6D246ACD0B0095CCCE /* SettingsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55CEC6C246ACD0B0095CCCE /* SettingsHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C55CEC6524660B8C0095CCCE /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		C55CEC672466569A0095CCCE /* VenueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
 		C55CEC6A2466FFEC0095CCCE /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		C55CEC6C246ACD0B0095CCCE /* SettingsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				C55CEC6A2466FFEC0095CCCE /* Extentions.swift */,
+				C55CEC6C246ACD0B0095CCCE /* SettingsHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				C53AAC6F2464556200773F2E /* AppDelegate.swift in Sources */,
 				C53AAC712464556200773F2E /* SceneDelegate.swift in Sources */,
 				C53AAC85246490B400773F2E /* HomeViewController.swift in Sources */,
+				C55CEC6D246ACD0B0095CCCE /* SettingsHelper.swift in Sources */,
 				C55CEC6624660B8C0095CCCE /* Venue.swift in Sources */,
 				C5471EF42464CE4F001AAA6F /* Constants.swift in Sources */,
 				C55CEC6B2466FFEC0095CCCE /* Extentions.swift in Sources */,

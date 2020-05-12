@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
     
     
     func APICall(latitude: String, longitude: String) {
-        print("gowa APiCAll")
+        
         let coordinates = latitude + "," + longitude
         print(coordinates)
         DispatchQueue.main.async {
